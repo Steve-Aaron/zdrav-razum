@@ -1,5 +1,4 @@
 import React from 'react';
-import { Facebook, Instagram } from 'lucide-react';
 
 const Surveys = () => {
   return (
@@ -21,11 +20,11 @@ const Surveys = () => {
             <p>Междувременно, можете да вземете участие в нашите дискусии и текущи допитвания в социалните мрежи:</p>
             
             <div className="social-links">
-              <a href="#" className="button">
-                <Facebook size={24} /> <span>FACEBOOK</span>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="button">
+                <span>ФЕЙСБУК</span>
               </a>
-              <a href="#" className="button">
-                <Instagram size={24} /> <span>INSTAGRAM</span>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="button">
+                <span>ИНСТАГРАМ</span>
               </a>
             </div>
           </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 
 const About = () => {
-  const familyImg = "/Users/steveknoxdigi/.gemini/antigravity/brain/5c7028b9-691e-4206-8c8f-791a06da01a4/bulgarian_family_portrait_1776087993323.png";
-  const marketImg = "/Users/steveknoxdigi/.gemini/antigravity/brain/5c7028b9-691e-4206-8c8f-791a06da01a4/bulgarian_farmers_market_1776088132824.png";
+  const familyImg = "/bulgarian_family_portrait.png";
+  const marketImg = "/bulgarian_farmers_market.png";
 
   return (
     <div className="about-page">
@@ -31,7 +31,7 @@ const About = () => {
             <div id="who" className="content-block">
               <h2>КОИ СМЕ НИЕ</h2>
               <div className="image-wrapper tactile-card">
-                <img src={familyImg} alt="Bulgarian family" />
+                <img src={familyImg} alt="Bulgarian family" style={{ maxHeight: '280px', objectFit: 'cover', width: '100%' }} />
               </div>
               <p>Ние сме обикновени български граждани – родители, професионалисти, студенти и пенсионери, които вярват, че България заслужава повече. Ние не сме професионални политици, а хора, които живеят с реалните проблеми на нашето общество.</p>
               <p>Нашата общност се гради върху доверието и желанието за истинска промяна в начина, по който се вземат решенията в страната ни.</p>
@@ -40,7 +40,7 @@ const About = () => {
             <div id="what" className="content-block">
               <h2>КАКВО ПРАВИМ</h2>
               <div className="image-wrapper tactile-card">
-                <img src={marketImg} alt="Bulgarian lifestyle" />
+                <img src={marketImg} alt="Bulgarian lifestyle" style={{ maxHeight: '280px', objectFit: 'cover', width: '100%' }} />
               </div>
               <p>Ние събираме мнения, провеждаме проучвания и предлагаме конкретни, прагматични решения на наболелите въпроси. Анализираме данните от нашите анкети, за да покажем какво в действителност мисли „мълчаливото мнозинство“.</p>
               <p>Ние сме гласът на здравия разум в дебат, често доминиран от крайности и лични интереси.</p>

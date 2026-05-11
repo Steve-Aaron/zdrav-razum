@@ -20,11 +20,14 @@ const Surveys = () => {
             <p>Междувременно, можете да вземете участие в нашите дискусии и текущи допитвания в социалните мрежи:</p>
             
             <div className="social-links">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="button">
+              <a href="https://facebook.com/commonsensebg" target="_blank" rel="noopener noreferrer" className="button">
                 <span>ФЕЙСБУК</span>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="button">
+              <a href="https://www.instagram.com/commonsensebg" target="_blank" rel="noopener noreferrer" className="button">
                 <span>ИНСТАГРАМ</span>
+              </a>
+              <a href="https://www.tiktok.com/@commonsensebg" target="_blank" rel="noopener noreferrer" className="button">
+                <span>ТИКТОК</span>
               </a>
             </div>
           </div>

@@ -126,7 +126,7 @@ button:disabled, .button:disabled {
 .footer-logo {
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
-  font-size: clamp(4rem, 15vw, 20rem);
+  font-size: clamp(2rem, 12vw, 10rem);
   white-space: nowrap;
   transform-origin: center;
   color: var(--text-color);
@@ -166,27 +166,48 @@ button:disabled, .button:disabled {
 
 /* Home Page Specifics */
 .hero {
-  height: 80vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-.hero-policy {
-  font-size: clamp(2rem, 8vw, 5rem);
-  line-height: 1;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
+.hero-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  font-size: clamp(2.2rem, 5.5vw, 5rem);
+  line-height: 1.05;
+  margin-bottom: 2.5rem;
 }
-.zdrav-razum-badge {
+.hero-typed-line {
+  display: block;
+  min-height: 1.1em;
+}
+.hero-cursor {
   display: inline-block;
+  width: 3px;
+  height: 0.85em;
   background: var(--accent-color);
-  color: white;
-  padding: 0.5rem 2rem;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
-  margin-top: 2rem;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.9s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.hero-suffix {
+  display: block;
+  color: var(--text-color);
+}
+.hero-highlight {
+  color: var(--accent-color);
+}
+.hero-cta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 .section-title {
   font-size: 2.5rem;
@@ -210,7 +231,7 @@ button:disabled, .button:disabled {
   flex-direction: column;
   gap: 1.5rem;
 }
-.mosaic-grid {
+.home-results .mosaic-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto auto;
@@ -227,11 +248,22 @@ button:disabled, .button:disabled {
   background: var(--text-color);
   color: var(--bg-color);
 }
+.mosaic-content h3 {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
 .stat {
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: 900;
   font-family: 'Outfit', sans-serif;
-  margin: 1rem 0;
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+.mosaic-item.large .stat {
+  font-size: 6rem;
 }
 .centered-button {
   display: block;
@@ -359,10 +391,16 @@ button:disabled, .button:disabled {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .nav-desktop { display: none !important; }
+  .nav-mobile { display: flex !important; }
+
   .two-columns, .three-columns, .mosaic-grid, .about-grid, .contact-grid, .results-mosaic {
     grid-template-columns: 1fr;
   }
   .sidebar { display: none; }
   .mosaic-item.large { grid-row: span 1; }
-  .social-links { flex-direction: column; }
+  .social-links { flex-direction: column; align-items: center; }
+  .hero-headline { font-size: clamp(1.8rem, 7vw, 3rem); }
+  .stat { font-size: 3rem; }
+  .mosaic-item.large .stat { font-size: 4.5rem; }
 }

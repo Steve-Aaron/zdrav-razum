@@ -6,17 +6,12 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer-logo-container">
-          <motion.h1 
+          <motion.h1
             className="footer-logo"
-            initial={{ scaleX: 2, opacity: 0 }}
-            whileInView={{ scaleX: 1, opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 100, 
-              damping: 10, 
-              mass: 1 
-            }}
+            initial={{ letterSpacing: '0.5em', opacity: 0 }}
+            whileInView={{ letterSpacing: '0em', opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             ЗДРАВ РАЗУМ
           </motion.h1>
@@ -25,9 +20,9 @@ const Footer = () => {
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Здрав Разум България. Всички права запазени.</p>
           <div className="footer-links">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Telegram</a>
+            <a href="https://facebook.com/commonsensebg" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/commonsensebg" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.tiktok.com/@commonsensebg" target="_blank" rel="noopener noreferrer">TikTok</a>
           </div>
         </div>
       </div>

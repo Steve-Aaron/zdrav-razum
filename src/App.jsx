@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -9,7 +10,6 @@ import Contact from './pages/Contact';
 
 function App() {
   const [theme, setTheme] = useState('light');
-  const [currentPage, setCurrentPage] = useState('home');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -19,30 +19,22 @@ function App() {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home': return <Home setCurrentPage={setCurrentPage} />;
-      case 'about': return <About />;
-      case 'surveys': return <Surveys />;
-      case 'results': return <Results />;
-      case 'contact': return <Contact />;
-      default: return <Home setCurrentPage={setCurrentPage} />;
-    }
-  };
-
   return (
-    <div className="app-wrapper">
-      <Navbar 
-        currentPage={currentPage} 
-        setCurrentPage={setCurrentPage} 
-        toggleTheme={toggleTheme} 
-        theme={theme}
-      />
-      <main>
-        {renderPage()}
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="app-wrapper">
+        <Navbar toggleTheme={toggleTheme} theme={theme} />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/surveys" element={<Surveys />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

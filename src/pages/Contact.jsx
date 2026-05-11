@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+// Sign up at https://formspree.io and replace with your real form ID
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
 const Contact = () => {
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Благодарим ви! Съобщението ви е изпратено (демо).');
+    setStatus('sending');
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -21,21 +43,33 @@ const Contact = () => {
         <div className="container contact-grid">
           {/* Left Column: Form */}
           <div className="contact-form-wrapper">
-            <form onSubmit={handleSubmit} className="tactile-card contact-form">
-              <div className="form-group">
-                <label htmlFor="name">ИМЕ</label>
-                <input type="text" id="name" required placeholder="Вашето име..." />
+            {status === 'success' ? (
+              <div className="tactile-card contact-form" style={{ textAlign: 'center', padding: '3rem' }}>
+                <h2>✓</h2>
+                <p>Благодарим ви! Съобщението е изпратено.</p>
               </div>
-              <div className="form-group">
-                <label htmlFor="email">ИМЕЙЛ</label>
-                <input type="email" id="email" required placeholder="example@mail.bg" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">СЪОБЩЕНИЕ</label>
-                <textarea id="message" rows="5" required placeholder="Вашето съобщение тук..."></textarea>
-              </div>
-              <button type="submit" className="submit-btn">ИЗПРАТИ</button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="tactile-card contact-form">
+                <div className="form-group">
+                  <label htmlFor="name">ИМЕ</label>
+                  <input type="text" id="name" name="name" required placeholder="Вашето име..." />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">ИМЕЙЛ</label>
+                  <input type="email" id="email" name="email" required placeholder="example@mail.bg" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message">СЪОБЩЕНИЕ</label>
+                  <textarea id="message" name="message" rows="5" required placeholder="Вашето съобщение тук..."></textarea>
+                </div>
+                {status === 'error' && (
+                  <p style={{ color: 'red', marginBottom: '1rem' }}>Грешка при изпращане. Моля, опитайте отново.</p>
+                )}
+                <button type="submit" className="submit-btn" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'ИЗПРАЩАНЕ...' : 'ИЗПРАТИ'}
+                </button>
+              </form>
+            )}
           </div>
 
           {/* Right Column: Outreach Text */}
